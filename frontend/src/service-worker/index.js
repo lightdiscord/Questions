@@ -22,13 +22,13 @@ const error = (error) => {
 };
 
 export const Register = () => {
-  if (process.env.NODE_ENV !== 'production') return;
-
-  return register(`${process.env.BASE_URL}service-worker.js`, {
-    ready,
-    cached,
-    updated,
-    offline,
-    error
-  });
+  if (process.env.NODE_ENV === 'production') {
+    return register(`${process.env.BASE_URL}service-worker.js`, {
+      ready,
+      cached,
+      updated,
+      offline,
+      error
+    });
+  }
 };

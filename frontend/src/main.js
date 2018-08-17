@@ -3,9 +3,11 @@ import App from './App.vue';
 import store from './store';
 import { Router } from './views';
 
-import * as ServiceWorker from './service-worker';
+// import * as ServiceWorker from './service-worker';
 
-ServiceWorker.Register();
+import 'milligram/dist/milligram.min.css';
+
+// ServiceWorker.Register();
 
 Vue.config.productionTip = false;
 
