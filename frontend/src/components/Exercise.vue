@@ -21,26 +21,32 @@
         <label for="response">Response</label>
         <div class="row">
           <div class="column">
-          <textarea placeholder="Enter your response" id="response"></textarea>
+          <textarea placeholder="Enter your response" id="response"
+            :disabled="!user"></textarea>
           </div>
         </div>
-        <input class="button-primary" type="submit" value="Send">
+        <input class="button-primary" type="submit"
+          :value="!user ? 'You need to be connected' : 'Send'"
+          :disabled="!user">
       </fieldset>
     </form>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'exercise',
   props: ['exercise'],
-  mounted () {
-    console.debug(this.exercise);
-  },
   methods: {
-    formatEmail (email) {
-      return `<${email}>`;
-    }
-  }
+    formatEmail: (email) =>`<${email}>`
+  },
+  computed: mapState(['user'])
 };
 </script>
+
+<style lang="stylus">
+textarea[disabled]
+  opacity .5
+</style>
